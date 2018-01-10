@@ -19,8 +19,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var lowTotal: UILabel!
     @IBOutlet weak var midTotal: UILabel!
     @IBOutlet weak var highTotal: UILabel!
+    @IBOutlet weak var groupSizeDisplay: UILabel!
+    @IBOutlet weak var GroupSizeNumber: UISlider!
+    @IBOutlet weak var tipPercentageValue: UISlider!
     
     var subtotal = ""
+    var lowTipValue = 0.05
+    var midTipValue = 0.10
+    var highTipValue = 0.15
     
     @IBAction func oneButton(_ sender: UIButton) {
         subtotal += "1"
@@ -59,10 +65,15 @@ class ViewController: UIViewController {
         subtotalLabel.text = subtotal
     }
     @IBAction func zeroButton(_ sender: UIButton) {
-        subtotal += "0"
-        subtotalLabel.text = subtotal
+        if subtotal != "" {
+            subtotal += "0"
+            subtotalLabel.text = subtotal
+        }
     }
     @IBAction func dotButton(_ sender: UIButton) {
+        if subtotal == "" {
+            subtotal += "0"
+        }
         subtotal += "."
         subtotalLabel.text = subtotal
     }
@@ -70,12 +81,29 @@ class ViewController: UIViewController {
         subtotal = ""
         subtotalLabel.text = subtotal
     }
+   
+    @IBAction func tipPercentage(_ sender: UISlider) {
+        lowTipValue = (Double(tipPercentageValue.value) - 0.05)*100
+        midTipValue = Double(tipPercentageValue.value)*100
+        highTipValue = (Double(tipPercentageValue.value) + 0.05)*100
+        lowTip.text = String(Int(lowTipValue)) + "%"
+        midTip.text = String(Int(midTipValue)) + "%"
+        highTip.text = String(Int(highTipValue)) + "%"
+    }
+    @IBAction func groupSize(_ sender: UISlider) {
+        groupSizeDisplay.text = String(Int(GroupSizeNumber.value))
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         subtotalLabel.text = subtotal
     }
+    
+    func updateUI() {
+//        var tlt = Double(subtotal) * lowTipValue
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

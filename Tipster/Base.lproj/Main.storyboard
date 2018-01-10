@@ -237,8 +237,11 @@
                                     <constraint firstItem="Q55-3p-tib" firstAttribute="top" secondItem="45p-Qd-Cuf" secondAttribute="bottom" id="k9t-7w-9a0"/>
                                 </constraints>
                             </stackView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="5" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="ohp-KO-FsB">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.14999999999999999" minValue="0.050000000000000003" maxValue="25" translatesAutoresizingMaskIntoConstraints="NO" id="ohp-KO-FsB">
                                 <rect key="frame" x="143" y="579" width="216" height="31"/>
+                                <connections>
+                                    <action selector="tipPercentage:" destination="BYZ-38-t0r" eventType="valueChanged" id="oxR-V9-Moi"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nw5-Bs-hpW">
                                 <rect key="frame" x="72" y="586" width="41.5" height="20.5"/>
@@ -252,14 +255,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXP-c5-ZPV">
-                                <rect key="frame" x="112.5" y="626.5" width="21" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXP-c5-ZPV">
+                                <rect key="frame" x="112.5" y="627" width="8" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nne-t6-yNg">
-                                <rect key="frame" x="139.5" y="617" width="221.5" height="31"/>
+                                <rect key="frame" x="126.5" y="617" width="234.5" height="31"/>
+                                <connections>
+                                    <action selector="groupSize:" destination="BYZ-38-t0r" eventType="valueChanged" id="AjQ-oQ-bZe"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -303,6 +309,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="GroupSizeNumber" destination="Nne-t6-yNg" id="HXl-Fc-Cig"/>
+                        <outlet property="groupSizeDisplay" destination="WXP-c5-ZPV" id="pYl-Tj-LrV"/>
                         <outlet property="highTip" destination="TNd-3d-wHs" id="tvt-17-wM7"/>
                         <outlet property="highTotal" destination="W4a-Df-8oL" id="8IB-O4-HNZ"/>
                         <outlet property="lowTip" destination="rll-GV-Woh" id="9yk-3s-Chc"/>
