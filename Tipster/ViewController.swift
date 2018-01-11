@@ -24,9 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipPercentageValue: UISlider!
     
     var subtotal = "0"
-    var lowTipValue: Float = 0.05
-    var midTipValue: Float = 0.10
-    var highTipValue: Float = 0.15
+    var lowTipValue: Float = 0.10
+    var midTipValue: Float = 0.15
+    var highTipValue: Float = 0.20
     var groupSize: Float = 1.0
     
     func checkSubtotal(x: String) {
@@ -98,12 +98,14 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func dotButton(_ sender: UIButton) {
-        if subtotal == "" {
-            subtotal += "0"
+        if subtotal.range(of: ".") == nil {
+            if subtotal == "" {
+                subtotal += "0"
+            }
+            subtotal += "."
+            subtotalLabel.text = subtotal
+            updateUI()
         }
-        subtotal += "."
-        subtotalLabel.text = subtotal
-        updateUI()
     }
     @IBAction func clearButton(_ sender: UIButton) {
         subtotal = "0"
@@ -112,9 +114,10 @@ class ViewController: UIViewController {
     }
    
     @IBAction func tipPercentage(_ sender: UISlider) {
-        lowTipValue = sender.value - 0.05
-        midTipValue = sender.value
-        highTipValue = sender.value + 0.05
+        let tip = round(sender.value*100)/100
+        lowTipValue = round((tip - 0.05)*1000)/1000
+        midTipValue = round(tip*1000)/1000
+        highTipValue = round((tip + 0.05)*1000)/1000
         updateUI()
     }
     @IBAction func groupSize(_ sender: UISlider) {
